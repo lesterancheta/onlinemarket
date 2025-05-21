@@ -8,94 +8,100 @@
   }
 
   .login-card {
-    max-width: 420px;
+    max-width: 340px;
     width: 100%;
-    background: #fff;
-    padding: 3rem 2.5rem;
-    border-radius: 25px;
-    box-shadow: 0 12px 25px rgba(238, 77, 45, 0.15);
+    background: #ffa94d; /* changed to orange */
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(238, 77, 45, 0.15);
     transition: box-shadow 0.3s ease;
   }
 
   .login-card:hover {
-    box-shadow: 0 18px 35px rgba(238, 77, 45, 0.3);
+    box-shadow: 0 12px 30px rgba(238, 77, 45, 0.25);
   }
 
   .login-title {
     font-weight: 700;
-    font-size: 2.25rem;
-    color: #ee4d2d;
-    margin-bottom: 2rem;
+    font-size: 1.75rem;
+    color: #fff; /* changed text color to white for contrast */
+    margin-bottom: 1.5rem;
     text-align: center;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
   }
 
   .form-group {
     position: relative;
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.4rem;
   }
 
   .form-control {
-    border-radius: 12px;
-    padding: 1rem 3.5rem 1rem 1.25rem;
-    border: 2px solid #ee4d2d;
-    font-size: 1.1rem;
+    border-radius: 10px;
+    padding: 0.75rem 3rem 0.75rem 1rem;
+    border: 2px solid #fff; /* lighter border for contrast */
+    font-size: 0.95rem;
     transition: border-color 0.3s ease;
+    background-color: #fff; /* keep input background white */
+    color: #333;
   }
 
   .form-control:focus {
-    border-color: #d94425;
-    box-shadow: 0 0 8px rgba(238, 77, 45, 0.4);
+    border-color: #fff;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+    outline: none;
   }
 
   .form-group svg {
     position: absolute;
     top: 50%;
-    right: 1.25rem;
+    right: 1rem;
     transform: translateY(-50%);
-    fill: #ee4d2d;
-    width: 22px;
-    height: 22px;
-    opacity: 0.7;
+    fill: #fff; /* icon white */
+    width: 18px;
+    height: 18px;
+    opacity: 0.85;
   }
 
   .btn-login {
-    background-color: #ee4d2d;
+    background-color: #fff; /* white button */
+    color: #ffa94d; /* orange text */
     border: none;
     width: 100%;
-    padding: 1.15rem;
-    font-weight: 700;
-    font-size: 1.2rem;
-    border-radius: 30px;
-    transition: background-color 0.3s ease;
+    padding: 0.85rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   .btn-login:hover {
-    background-color: #d94425;
+    background-color: #d4881f; /* darker orange */
+    color: #fff;
   }
 
   .register-link {
     text-align: center;
-    margin-top: 1.8rem;
-    font-size: 1rem;
+    margin-top: 1.3rem;
+    font-size: 0.9rem;
+    color: #fff;
   }
 
   .register-link a {
-    color: #ee4d2d;
+    color: #fff;
     font-weight: 600;
-    text-decoration: none;
+    text-decoration: underline;
     transition: color 0.3s ease;
   }
 
   .register-link a:hover {
-    color: #d94425;
+    color: #d4881f;
     text-decoration: underline;
   }
 
   .alert {
-    padding: 0.9rem 1.2rem;
-    border-radius: 12px;
-    font-size: 0.95rem;
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
     font-weight: 600;
     color: #721c24;
     background-color: #f8d7da;
@@ -109,20 +115,20 @@
 
     {{-- Error / Validation Message --}}
     @if (session('error'))
-      <div class="alert text-center mb-4" role="alert">
+      <div class="alert text-center mb-3" role="alert">
         {{ session('error') }}
       </div>
     @endif
 
     @if ($errors->any())
-      <div class="alert text-center mb-4" role="alert">
+      <div class="alert text-center mb-3" role="alert">
         {{ $errors->first() }}
       </div>
     @endif
 
     <form method="POST" action="{{ route('login') }}">
       @csrf
-      
+
       <div class="form-group">
         <input 
           type="email" 

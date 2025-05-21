@@ -5,15 +5,15 @@
 @section('content')
 <style>
   body {
-    background-color: #fff9f7;
+    background-color: #fff9f7; /* keep original background */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
   .register-card {
-    max-width: 480px;
+    max-width: 340px; /* smaller card */
     width: 100%;
-    background: #fff;
-    padding: 3rem 2.5rem;
+    background: #ffa94d; /* orange background for the card */
+    padding: 3rem 2rem;
     border-radius: 25px;
     box-shadow: 0 12px 25px rgba(238, 77, 45, 0.15);
     transition: box-shadow 0.3s ease;
@@ -24,8 +24,8 @@
 
   .register-title {
     font-weight: 700;
-    font-size: 2.25rem;
-    color: #ee4d2d;
+    font-size: 2rem;
+    color: #fff; /* white text to contrast with orange */
     margin-bottom: 2rem;
     text-align: center;
     letter-spacing: 1px;
@@ -33,19 +33,23 @@
 
   .form-group {
     position: relative;
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.6rem;
   }
 
   .form-control, .form-select {
     border-radius: 12px;
     padding: 1rem 3.5rem 1rem 1.25rem;
-    border: 2px solid #ee4d2d;
-    font-size: 1.1rem;
+    border: 2px solid #fff; /* white border */
+    font-size: 1.05rem;
     transition: border-color 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.9); /* slightly transparent white */
+    color: #333;
   }
   .form-control:focus, .form-select:focus {
-    border-color: #d94425;
-    box-shadow: 0 0 8px rgba(238, 77, 45, 0.4);
+    border-color: #fff;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+    background-color: #fff;
+    color: #000;
   }
 
   /* Input icons */
@@ -54,46 +58,48 @@
     top: 50%;
     right: 1.25rem;
     transform: translateY(-50%);
-    fill: #ee4d2d;
-    width: 22px;
-    height: 22px;
-    opacity: 0.7;
+    fill: #fff; /* white icons */
+    width: 20px;
+    height: 20px;
+    opacity: 0.8;
   }
 
   .btn-register {
-    background-color: #ee4d2d;
+    background-color: #fff; /* white button */
     border: none;
     width: 100%;
-    padding: 1.15rem;
+    padding: 1.1rem;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     border-radius: 30px;
     transition: background-color 0.3s ease;
+    color: #ee4d2d; /* orange text */
   }
   .btn-register:hover {
-    background-color: #d94425;
+    background-color: #ffe6d9; /* lighter orange on hover */
   }
 
   .login-link {
     text-align: center;
-    margin-top: 1.8rem;
+    margin-top: 1.6rem;
     font-size: 1rem;
+    color: #fff; /* white text */
   }
   .login-link a {
-    color: #ee4d2d;
+    color: #fff;
     font-weight: 600;
-    text-decoration: none;
+    text-decoration: underline;
     transition: color 0.3s ease;
   }
   .login-link a:hover {
     color: #d94425;
-    text-decoration: underline;
   }
 
   .alert {
     border-radius: 12px;
   }
 </style>
+
 
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 75vh;">
   <div class="register-card">
