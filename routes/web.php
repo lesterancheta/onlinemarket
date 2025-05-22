@@ -71,6 +71,10 @@ Route::middleware(['auth', 'role:customer'])->get('/customer/dashboard', [Custom
 Route::middleware('auth')->group(function () {
     Route::post('/order/{productId}', [OrderController::class, 'placeOrder'])->name('order.place');
     Route::get('/orders', [OrderController::class, 'viewOrders'])->name('orders.view');
+    // routes/web.php
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::post('/checkout/single', [CheckoutController::class, 'checkoutSingle'])->name('checkout.single');
+
 });
 
 Route::put('/orders/{order}', [VendorController::class, 'updateOrderStatus'])->name('orders.update');
@@ -97,10 +101,20 @@ Route::get('/admin/orders', [AdminController::class, 'viewOrders'])->name('admin
 });
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::get('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 });
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+Route::middleware('auth')->group(function () {
+    Route::post('/cart/add/{productId}', [CartController::class, 'add'])->name('cart.add');
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+   Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+
+    Route::post('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+    Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+    Route::post('/cart/update-all', [CartController::class, 'updateAll'])->name('cart.update.all');
+Route::post('/cart/checkout-multiple', [CartController::class, 'checkoutMultiple'])->name('checkout.multiple');
+
+});
+
 
 // Logout fallback route (can be removed if handled by LoginController)
 Route::post('/logout', function () {

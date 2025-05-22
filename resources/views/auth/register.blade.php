@@ -3,107 +3,170 @@
 @section('title', 'Customer Registration')
 
 @section('content')
+
 <style>
-  body {
-    background-color: #fff9f7; /* keep original background */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Reset & base */
+  body, html {
+    background-color: #121212;
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
   }
 
-  .register-card {
-    max-width: 340px; /* smaller card */
-    width: 100%;
-    background: #ffa94d; /* orange background for the card */
-    padding: 3rem 2rem;
-    border-radius: 25px;
-    box-shadow: 0 12px 25px rgba(238, 77, 45, 0.15);
-    transition: box-shadow 0.3s ease;
+  /* Center container with flex */
+  .container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
   }
-  .register-card:hover {
-    box-shadow: 0 18px 35px rgba(238, 77, 45, 0.3);
+
+  /* Card wrapper */
+  .register-card {
+    background: #1f1f1f;
+    border: 2px solid #f97316;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(249,115,22,0.3);
+    width: 100%;
+    max-width: 900px; /* max width expanded for desktop */
+    padding: 2rem;
+    color: white;
   }
 
   .register-title {
-    font-weight: 700;
     font-size: 2rem;
-    color: #fff; /* white text to contrast with orange */
-    margin-bottom: 2rem;
+    font-weight: 700;
+    color: #f97316;
+    margin-bottom: 1.5rem;
     text-align: center;
-    letter-spacing: 1px;
   }
 
+  /* Form grid: 3 columns desktop */
+  form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem 1.5rem;
+  }
+
+  /* Form groups */
   .form-group {
     position: relative;
-    margin-bottom: 1.6rem;
   }
 
-  .form-control, .form-select {
-    border-radius: 12px;
-    padding: 1rem 3.5rem 1rem 1.25rem;
-    border: 2px solid #fff; /* white border */
-    font-size: 1.05rem;
+  /* Inputs */
+  .form-control {
+    width: 100%;
+    padding: 0.75rem 2.75rem 0.75rem 1rem;
+    border: 1.5px solid #444;
+    border-radius: 8px;
+    background-color: #2c2c2c;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    outline-offset: 2px;
+    outline-color: transparent;
     transition: border-color 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.9); /* slightly transparent white */
-    color: #333;
-  }
-  .form-control:focus, .form-select:focus {
-    border-color: #fff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
-    background-color: #fff;
-    color: #000;
   }
 
-  /* Input icons */
+  .form-control::placeholder {
+    color: #bbb;
+    font-weight: bold;
+  }
+
+  .form-control:focus {
+    border-color: #f97316;
+    outline-color: #f97316;
+    background-color: #3a3a3a;
+  }
+
+  /* SVG icon position */
   .form-group svg {
     position: absolute;
+    right: 12px;
     top: 50%;
-    right: 1.25rem;
     transform: translateY(-50%);
-    fill: #fff; /* white icons */
+    fill: #f97316;
     width: 20px;
     height: 20px;
-    opacity: 0.8;
+    pointer-events: none;
   }
 
+  /* Button */
   .btn-register {
-    background-color: #fff; /* white button */
+    grid-column: 1 / -1; /* full width */
+    background-color: #f97316;
+    color: white;
     border: none;
-    width: 100%;
-    padding: 1.1rem;
+    padding: 0.75rem;
+    border-radius: 8px;
     font-weight: 700;
-    font-size: 1.15rem;
-    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
     transition: background-color 0.3s ease;
-    color: #ee4d2d; /* orange text */
+    margin-top: 1rem;
   }
+
   .btn-register:hover {
-    background-color: #ffe6d9; /* lighter orange on hover */
+    background-color: #ea580c;
   }
 
+  /* Login link */
   .login-link {
+    grid-column: 1 / -1; /* full width */
     text-align: center;
-    margin-top: 1.6rem;
-    font-size: 1rem;
-    color: #fff; /* white text */
-  }
-  .login-link a {
-    color: #fff;
-    font-weight: 600;
-    text-decoration: underline;
-    transition: color 0.3s ease;
-  }
-  .login-link a:hover {
-    color: #d94425;
+    margin-top: 1rem;
+    color: white;
+    font-weight: bold;
   }
 
+  .login-link a {
+    color: #f97316;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  /* Alerts full width */
   .alert {
-    border-radius: 12px;
+    border-radius: 8px;
+    grid-column: 1 / -1;
+  }
+
+  /* Select styling */
+  select.form-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1.5px solid #444;
+    background-color: #2c2c2c;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  select.form-select:focus {
+    border-color: #f97316;
+    outline-color: #f97316;
+    background-color: #3a3a3a;
+    outline-offset: 2px;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 900px) {
+    form {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns tablets */
+    }
+  }
+
+  @media (max-width: 600px) {
+    form {
+      grid-template-columns: 1fr; /* 1 column phones */
+    }
   }
 </style>
 
-
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 75vh;">
+<div class="container">
   <div class="register-card">
-
     <h2 class="register-title">Customer Registration</h2>
 
     {{-- Show validation errors --}}
@@ -216,15 +279,16 @@
       </div>
       @endif
 
-      <button type="submit" class="btn btn-register">
+      <button type="submit" class="btn-register">
         Register
       </button>
     </form>
 
     <p class="login-link">
-      Already have an account? 
+      Already have an account?
       <a href="{{ route('login') }}">Login here</a>
     </p>
   </div>
 </div>
+
 @endsection

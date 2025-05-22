@@ -11,15 +11,19 @@ class CartController extends Controller
 {
     
     public function index()
-    {
-        $cartItems = CartItem::with('product')
-            ->where('user_id', Auth::id())
-            ->get();
+{
+    $cartItems = CartItem::with('product')
+        ->where('user_id', Auth::id())
+        ->get()
+        ->filter(fn($item) => $item->product !== null);
 
-        $totalPrice = $cartItems->sum(fn($item) => $item->product->price * $item->quantity);
+    $totalPrice = $cartItems->sum(function ($item) {
+        return $item->product->price * $item->quantity;
+    });
 
-        return view('customer.cart.index', compact('cartItems', 'totalPrice'));
-    }
+    return view('customer.cart.index', compact('cartItems', 'totalPrice'));
+}
+
 
    public function add(Request $request, $productId)
 {
@@ -43,20 +47,20 @@ class CartController extends Controller
 
 
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'quantity' => 'required|integer|min:1'
-        ]);
+{
+    $request->validate([
+        'quantity' => 'required|integer|min:1'
+    ]);
 
-        $cartItem = CartItem::where('id', $id)
-            ->where('user_id', Auth::id())
-            ->firstOrFail();
+    $cartItem = CartItem::where('id', $id)
+        ->where('user_id', Auth::id())
+        ->firstOrFail();
 
-        $cartItem->quantity = $request->input('quantity');
-        $cartItem->save();
+    $cartItem->quantity = $request->input('quantity');
+    $cartItem->save();
 
-        return back()->with('success', 'Cart updated.');
-    }
+    return back()->with('success', 'Cart updated.');
+}
 
     public function remove($id)
     {
@@ -78,6 +82,7 @@ class CartController extends Controller
 {
     Schema::table('cart_items', function (Blueprint $table) {
         $table->foreignId('user_id')->after('id')->constrained()->onDelete('cascade');
+        
     });
 }
 

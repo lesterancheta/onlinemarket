@@ -17,7 +17,7 @@ class ProductController extends Controller
         return view('vendor.products.create');
     }
 
-   public function store(Request $request)
+public function store(Request $request)
 {
     $product = new Product();
     $product->name = $request->name;
@@ -26,8 +26,11 @@ class ProductController extends Controller
 
     if ($request->hasFile('image')) {
         $imagePath = $request->file('image')->store('products', 'public');
-        $product->picture = $imagePath; // this gets saved as "products/filename.jpg"
+        $product->picture = $imagePath;
     }
+
+    // ✅ Set the user_id from the currently authenticated user
+    $product->user_id = auth()->id();
 
     $product->save();
 

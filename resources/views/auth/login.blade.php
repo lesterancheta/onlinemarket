@@ -1,127 +1,156 @@
 @extends('layouts.layout')
 
 @section('content')
+
 <style>
-  body {
-    background-color: #fff9f7;
+  /* Full dark background */
+  body, html {
+    height: 100%;
+    margin: 0;
+    background: #121212; /* very dark */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
+  /* Center container full viewport height */
+  .container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  /* Login card styling */
   .login-card {
-    max-width: 340px;
+    background: #1e1e1e; /* dark gray */
+    border-radius: 1rem;
     width: 100%;
-    background: #ffa94d; /* changed to orange */
-    padding: 2rem 1.5rem;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(238, 77, 45, 0.15);
-    transition: box-shadow 0.3s ease;
-  }
-
-  .login-card:hover {
-    box-shadow: 0 12px 30px rgba(238, 77, 45, 0.25);
-  }
-
-  .login-title {
-    font-weight: 700;
-    font-size: 1.75rem;
-    color: #fff; /* changed text color to white for contrast */
-    margin-bottom: 1.5rem;
+    max-width: 400px;
+    padding: 2.5rem 2rem;
+    color: #eee;
     text-align: center;
-    letter-spacing: 0.5px;
+    box-shadow: none; /* no glow */
   }
 
+  /* Title */
+  .login-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #f97316;
+    margin-bottom: 2rem;
+  }
+
+  /* Form group */
   .form-group {
     position: relative;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.5rem;
   }
 
+  /* Inputs */
   .form-control {
-    border-radius: 10px;
-    padding: 0.75rem 3rem 0.75rem 1rem;
-    border: 2px solid #fff; /* lighter border for contrast */
-    font-size: 0.95rem;
-    transition: border-color 0.3s ease;
-    background-color: #fff; /* keep input background white */
-    color: #333;
-  }
-
-  .form-control:focus {
-    border-color: #fff;
-    box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
-    outline: none;
-  }
-
-  .form-group svg {
-    position: absolute;
-    top: 50%;
-    right: 1rem;
-    transform: translateY(-50%);
-    fill: #fff; /* icon white */
-    width: 18px;
-    height: 18px;
-    opacity: 0.85;
-  }
-
-  .btn-login {
-    background-color: #fff; /* white button */
-    color: #ffa94d; /* orange text */
-    border: none;
     width: 100%;
-    padding: 0.85rem;
+    padding: 0.75rem 2.75rem 0.75rem 1rem;
+    border: 1.5px solid #444;
+    border-radius: 8px;
+    background-color: #2a2a2a;
+    color: #eee;
     font-weight: 600;
     font-size: 1rem;
-    border-radius: 25px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    outline-offset: 2px;
+    outline-color: transparent;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
   }
-
-  .btn-login:hover {
-    background-color: #d4881f; /* darker orange */
-    color: #fff;
-  }
-
-  .register-link {
-    text-align: center;
-    margin-top: 1.3rem;
-    font-size: 0.9rem;
-    color: #fff;
-  }
-
-  .register-link a {
-    color: #fff;
+  .form-control::placeholder {
+    color: #bbb;
     font-weight: 600;
-    text-decoration: underline;
+  }
+  .form-control:focus {
+    border-color: #f97316;
+    background-color: #3c3c3c;
+    outline-color: #f97316;
+  }
+
+  /* SVG icons inside inputs */
+  .form-group svg {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    fill: #f97316;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+  }
+
+  /* Button */
+  .btn-login {
+    width: 100%;
+    background-color: #f97316;
+    color: white;
+    border: none;
+    padding: 0.85rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .btn-login:hover {
+    background-color: #ea580c;
+  }
+
+  /* Alert messages */
+  .alert {
+    border-radius: 8px;
+    margin-bottom: 1.25rem;
+    padding: 0.8rem 1rem;
+    font-weight: 600;
+    background-color: #b91c1c; /* dark red */
+    color: #fff;
+  }
+
+  /* Register link */
+  .register-link {
+    margin-top: 1.5rem;
+    color: #eee;
+    font-weight: 600;
+  }
+  .register-link a {
+    color: #f97316;
+    text-decoration: none;
+    font-weight: 700;
     transition: color 0.3s ease;
   }
-
   .register-link a:hover {
-    color: #d4881f;
-    text-decoration: underline;
+    color: #ea580c;
   }
 
-  .alert {
-    padding: 0.7rem 1rem;
-    border-radius: 10px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #721c24;
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
+  /* Responsive for small screens */
+  @media (max-width: 480px) {
+    .login-card {
+      padding: 2rem 1.5rem;
+      max-width: 95%;
+    }
+    .login-title {
+      font-size: 1.6rem;
+    }
   }
 </style>
 
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+<div class="container">
   <div class="login-card">
+
     <h2 class="login-title">Login</h2>
 
     {{-- Error / Validation Message --}}
     @if (session('error'))
-      <div class="alert text-center mb-3" role="alert">
+      <div class="alert text-center" role="alert">
         {{ session('error') }}
       </div>
     @endif
 
     @if ($errors->any())
-      <div class="alert text-center mb-3" role="alert">
+      <div class="alert text-center" role="alert">
         {{ $errors->first() }}
       </div>
     @endif
@@ -153,7 +182,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 8h-1V6a4 4 0 00-8 0v2H7a2 2 0 00-2 2v8a2 2 0 002 2h10a2 2 0 002-2v-8a2 2 0 00-2-2zM9 6a2 2 0 114 0v2H9V6zm6 10H9v-4h6v4z"/></svg>
       </div>
 
-      <button type="submit" class="btn btn-login">Login</button>
+      <button type="submit" class="btn-login">Login</button>
     </form>
 
     <p class="register-link">
@@ -162,4 +191,5 @@
     </p>
   </div>
 </div>
+
 @endsection
