@@ -99,7 +99,7 @@
                     <tr>
                         <td>
                             @if($product->picture)
-                                <img src="{{ asset('storage/' . $product->picture) }}" width="60" height="60" style="object-fit: cover;">
+                                <img src="{{ asset('storage/app/public/' . $product->picture) }}" width="60" height="60" style="object-fit: cover;">
                             @else
                                 <img src="{{ asset('images/no-image.png') }}" width="60" height="60">
                             @endif
@@ -149,7 +149,7 @@
                                             <input type="file" name="image" class="form-control" accept="image/*">
                                             @if($product->picture)
                                                 <small class="text-muted d-block mt-2">Current image: 
-                                                    <img src="{{ asset('storage/' . $product->picture) }}" width="40" height="40" class="ms-2" style="object-fit: cover;">
+                                                    <img src="{{ asset('storage/app/public/' . $product->picture) }}" width="40" height="40" class="ms-2" style="object-fit: cover;">
                                                 </small>
                                             @endif
                                         </div>

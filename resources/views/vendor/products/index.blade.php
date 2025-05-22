@@ -19,7 +19,7 @@
                 <div class="card h-100">
                     <div class="card-body">
                     @if ($product->picture)
-                    <img src="{{ asset($product->picture) }}" alt="{{ $product->name }}" class="img-fluid mb-3" style="max-height: 150px; object-fit: cover;">
+                    <img src="{{ asset('storage/app/public/' . $product->picture) }}" class="img-fluid mb-3" style="max-height: 150px; object-fit: cover;">
                         @else
                             <img src="{{ asset('images/no-image.png') }}" alt="No Image" class="img-fluid mb-3" style="max-height: 150px; object-fit: cover;">
                         @endif
