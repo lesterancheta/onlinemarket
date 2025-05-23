@@ -19,7 +19,7 @@
                             <tr>
                                 <th>Order ID</th>
                                 <th>Product</th>
-                                
+                                <th>Status</th>
                                 <th>Total</th>
                                 <th>Delivery Status</th>
                                 <th>Delivery Person</th>
@@ -31,7 +31,7 @@
                                     <td>#{{ $order->id }}</td>
                                     <td>{{ $order->product->name ?? 'Product deleted' }}</td>
                                     <td>
-                                        
+                                        <span class="badge bg-primary">{{ ucfirst($order->status) }}</span>
                                     </td>
                                     <td>₱{{ number_format($order->total, 2) }}</td>
                                     <td>
