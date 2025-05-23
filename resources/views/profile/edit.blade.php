@@ -58,16 +58,7 @@
                 <textarea name="address" class="form-control" rows="3">{{ old('address', auth()->user()->address) }}</textarea>
             </div>
 
-            <div class="mb-3">
-                <label class="form-label">Profile Picture</label>
-                <input type="file" name="picture" class="form-control" accept="image/*">
-                @if (auth()->user()->picture)
-                    <div class="mt-2">
-                        <img src="{{ asset('storage/' . auth()->user()->picture) }}" width="80" height="80" style="object-fit: cover;" class="rounded">
-                    </div>
-                @endif
-            </div>
- 
+           
             <button type="submit" class="btn btn-orange">Save Changes</button>
             
         </form>
