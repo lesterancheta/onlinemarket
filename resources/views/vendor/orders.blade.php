@@ -87,12 +87,6 @@
                                         @csrf
                                         @method('PUT')
 
-                                        <select name="status" class="form-select mb-1" required>
-                                            <option value="pending" {{ $order->status == 'pending' ? 'selected' : '' }}>Pending</option>
-                                            <option value="processing" {{ $order->status == 'processing' ? 'selected' : '' }}>Processing</option>
-                                            <option value="completed" {{ $order->status == 'completed' ? 'selected' : '' }}>Completed</option>
-                                            <option value="cancelled" {{ $order->status == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
-                                        </select>
 
                                         <select name="delivery_person_id" class="form-select mb-1">
                                             <option value="">-- Assign Delivery Person --</option>
