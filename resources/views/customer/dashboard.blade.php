@@ -19,7 +19,7 @@
                             <tr>
                                 <th>Order ID</th>
                                 <th>Product</th>
-                                <th>Status</th>
+                                
                                 <th>Total</th>
                                 <th>Delivery Status</th>
                                 <th>Delivery Person</th>
