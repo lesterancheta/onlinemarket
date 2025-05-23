@@ -94,12 +94,6 @@
                                             <option value="cancelled" {{ $order->status == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
                                         </select>
 
-                                        <select name="delivery_status" class="form-select mb-1" required>
-                                            <option value="pending" {{ $order->delivery_status == 'pending' ? 'selected' : '' }}>Pending</option>
-                                            <option value="out_for_delivery" {{ $order->delivery_status == 'out_for_delivery' ? 'selected' : '' }}>Out for Delivery</option>
-                                            <option value="delivered" {{ $order->delivery_status == 'delivered' ? 'selected' : '' }}>Delivered</option>
-                                        </select>
-
                                         <select name="delivery_person_id" class="form-select mb-1">
                                             <option value="">-- Assign Delivery Person --</option>
                                             @foreach ($deliveryPeople as $person)
