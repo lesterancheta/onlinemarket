@@ -13,6 +13,8 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -74,7 +76,7 @@ Route::middleware('auth')->group(function () {
     // routes/web.php
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::post('/checkout/single', [CheckoutController::class, 'checkoutSingle'])->name('checkout.single');
-
+Route::get('/checkout', [CheckoutController::class, 'index']);
 });
 
 Route::put('/orders/{order}', [VendorController::class, 'updateOrderStatus'])->name('orders.update');
