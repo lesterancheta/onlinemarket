@@ -3,15 +3,14 @@
 @section('content')
 
 <style>
-  /* Full dark background */
+  /* Full light background */
   body, html {
     height: 100%;
     margin: 0;
-    background: #121212; /* very dark */
+    background: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
-  /* Center container full viewport height */
   .container {
     min-height: 100vh;
     display: flex;
@@ -20,19 +19,17 @@
     padding: 1rem;
   }
 
-  /* Login card styling */
   .login-card {
-    background: #1e1e1e; /* dark gray */
+    background: #ffffff;
     border-radius: 1rem;
     width: 100%;
     max-width: 400px;
     padding: 2.5rem 2rem;
-    color: #eee;
+    color: #333;
     text-align: center;
-    box-shadow: none; /* no glow */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   }
 
-  /* Title */
   .login-title {
     font-size: 2rem;
     font-weight: 700;
@@ -40,37 +37,34 @@
     margin-bottom: 2rem;
   }
 
-  /* Form group */
   .form-group {
     position: relative;
     margin-bottom: 1.5rem;
   }
 
-  /* Inputs */
   .form-control {
     width: 100%;
     padding: 0.75rem 2.75rem 0.75rem 1rem;
-    border: 1.5px solid #444;
+    border: 1.5px solid #ccc;
     border-radius: 8px;
-    background-color: #2a2a2a;
-    color: #eee;
+    background-color: #f9f9f9;
+    color: #333;
     font-weight: 600;
     font-size: 1rem;
-    outline-offset: 2px;
-    outline-color: transparent;
     transition: border-color 0.3s ease, background-color 0.3s ease;
   }
+
   .form-control::placeholder {
-    color: #bbb;
+    color: #999;
     font-weight: 600;
   }
+
   .form-control:focus {
     border-color: #f97316;
-    background-color: #3c3c3c;
-    outline-color: #f97316;
+    background-color: #fff;
+    outline: none;
   }
 
-  /* SVG icons inside inputs */
   .form-group svg {
     position: absolute;
     right: 12px;
@@ -82,7 +76,6 @@
     pointer-events: none;
   }
 
-  /* Button */
   .btn-login {
     width: 100%;
     background-color: #f97316;
@@ -95,42 +88,43 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
+
   .btn-login:hover {
     background-color: #ea580c;
   }
 
-  /* Alert messages */
   .alert {
     border-radius: 8px;
     margin-bottom: 1.25rem;
     padding: 0.8rem 1rem;
     font-weight: 600;
-    background-color: #b91c1c; /* dark red */
+    background-color: #f87171; /* soft red */
     color: #fff;
   }
 
-  /* Register link */
   .register-link {
     margin-top: 1.5rem;
-    color: #eee;
+    color: #333;
     font-weight: 600;
   }
+
   .register-link a {
     color: #f97316;
     text-decoration: none;
     font-weight: 700;
     transition: color 0.3s ease;
   }
+
   .register-link a:hover {
     color: #ea580c;
   }
 
-  /* Responsive for small screens */
   @media (max-width: 480px) {
     .login-card {
       padding: 2rem 1.5rem;
       max-width: 95%;
     }
+
     .login-title {
       font-size: 1.6rem;
     }
@@ -142,7 +136,6 @@
 
     <h2 class="login-title">Login</h2>
 
-    {{-- Error / Validation Message --}}
     @if (session('error'))
       <div class="alert text-center" role="alert">
         {{ session('error') }}
