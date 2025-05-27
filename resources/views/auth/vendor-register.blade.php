@@ -3,49 +3,47 @@
 @section('content')
 <style>
     body {
-        background-color: #121212;
-        color: #f5f5f5;
+        background-color: #f8f9fa;
+        color: #212529;
     }
 
-    .dark-card {
-        background-color: #1f1f1f;
-        border: 1px solid #333;
+    .light-card {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
         border-radius: 16px;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     }
 
-    .dark-title {
-        color: #ffffff;
+    .light-title {
+        color: #343a40;
         font-weight: 700;
     }
 
-    .dark-label {
+    .light-label {
         font-weight: 600;
-        color: #cccccc;
+        color: #495057;
     }
 
-    .dark-input {
-        background-color: #2c2c2c;
-        border: 1px solid #444;
-        color: #fff;
+    .light-input {
+        background-color: #fff;
+        border: 1px solid #ced4da;
+        color: #212529;
         border-radius: 10px;
     }
 
-    .dark-input:focus {
-        background-color: #2c2c2c;
-        border-color: #28a745;
-        box-shadow: 0 0 0 0.15rem rgba(40, 167, 69, 0.4);
-        color: #fff;
+    .light-input:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.25);
     }
 
-    .btn-ecom-green {
-        background-color: #28a745;
+    .btn-primary-light {
+        background-color: #0d6efd;
         border: none;
         transition: background-color 0.3s ease;
     }
 
-    .btn-ecom-green:hover {
-        background-color: #218838;
+    .btn-primary-light:hover {
+        background-color: #0b5ed7;
     }
 
     .alert {
@@ -57,9 +55,9 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card dark-card p-4">
+            <div class="card light-card p-4">
                 <div class="card-body">
-                    <h2 class="mb-4 text-center dark-title">🛍️ Vendor Registration</h2>
+                    <h2 class="mb-4 text-center light-title">🛍️ Vendor Registration</h2>
 
                     @if (session('success'))
                         <div class="alert alert-success">{{ session('success') }}</div>
@@ -73,9 +71,9 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label for="name" class="form-label dark-label">Full Name</label>
+                            <label for="name" class="form-label light-label">Full Name</label>
                             <input id="name" type="text"
-                                   class="form-control dark-input @error('name') is-invalid @enderror"
+                                   class="form-control light-input @error('name') is-invalid @enderror"
                                    name="name" value="{{ old('name') }}" required autofocus>
                             @error('name')
                                 <div class="invalid-feedback d-block text-danger">{{ $message }}</div>
@@ -83,9 +81,9 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="email" class="form-label dark-label">Email Address</label>
+                            <label for="email" class="form-label light-label">Email Address</label>
                             <input id="email" type="email"
-                                   class="form-control dark-input @error('email') is-invalid @enderror"
+                                   class="form-control light-input @error('email') is-invalid @enderror"
                                    name="email" value="{{ old('email') }}" required>
                             @error('email')
                                 <div class="invalid-feedback d-block text-danger">{{ $message }}</div>
@@ -93,9 +91,9 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="password" class="form-label dark-label">Password</label>
+                            <label for="password" class="form-label light-label">Password</label>
                             <input id="password" type="password"
-                                   class="form-control dark-input @error('password') is-invalid @enderror"
+                                   class="form-control light-input @error('password') is-invalid @enderror"
                                    name="password" required>
                             @error('password')
                                 <div class="invalid-feedback d-block text-danger">{{ $message }}</div>
@@ -103,14 +101,14 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="password_confirmation" class="form-label dark-label">Confirm Password</label>
+                            <label for="password_confirmation" class="form-label light-label">Confirm Password</label>
                             <input id="password_confirmation" type="password"
-                                   class="form-control dark-input"
+                                   class="form-control light-input"
                                    name="password_confirmation" required>
                         </div>
 
                         <button type="submit"
-                                class="btn w-100 py-2 fw-semibold text-white btn-ecom-green rounded-3">
+                                class="btn w-100 py-2 fw-semibold text-white btn-primary-light rounded-3">
                             Register as Vendor
                         </button>
                     </form>
