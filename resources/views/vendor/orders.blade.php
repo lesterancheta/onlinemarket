@@ -60,7 +60,7 @@
                         <tr>
                             <th>Order ID</th>
                             <th>Product</th>
-                            <th>Status</th>
+                            
                             <th>Total</th>
                             <th>Customer Name</th>
                             <th>Address</th>
