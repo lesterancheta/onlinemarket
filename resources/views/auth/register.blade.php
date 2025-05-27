@@ -35,7 +35,7 @@
   .register-title {
     font-size: 2rem;
     font-weight: 700;
-    color: #0d6efd;
+    color:rgb(253, 125, 13);
     margin-bottom: 1.5rem;
     text-align: center;
   }
@@ -65,7 +65,7 @@
   }
 
   .form-control:focus {
-    border-color: #0d6efd;
+    border-color:rgb(253, 153, 13);
     outline: none;
     box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
   }
@@ -75,7 +75,7 @@
     right: 12px;
     top: 50%;
     transform: translateY(-50%);
-    fill: #0d6efd;
+    fill:rgb(253, 125, 13);
     width: 20px;
     height: 20px;
     pointer-events: none;
@@ -83,7 +83,7 @@
 
   .btn-register {
     grid-column: 1 / -1;
-    background-color: #0d6efd;
+    background-color:rgb(251, 138, 32);
     color: white;
     border: none;
     padding: 0.75rem;
@@ -96,7 +96,7 @@
   }
 
   .btn-register:hover {
-    background-color: #0b5ed7;
+    background-color:rgb(255, 143, 45);
   }
 
   .login-link {
@@ -108,7 +108,7 @@
   }
 
   .login-link a {
-    color: #0d6efd;
+    color:rgb(251, 102, 16);
     text-decoration: none;
   }
 
@@ -132,7 +132,7 @@
   }
 
   select.form-select:focus {
-    border-color: #0d6efd;
+    border-color:rgb(255, 143, 52);
     box-shadow: 0 0 0 0.2rem rgba(13,110,253,0.25);
     outline: none;
   }
