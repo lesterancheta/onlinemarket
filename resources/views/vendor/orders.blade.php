@@ -75,7 +75,7 @@
                             <tr>
                                 <td>{{ $order->id }}</td>
                                 <td>{{ $order->product->name ?? 'Product deleted' }}</td>
-                                <td>{{ ucfirst($order->status) }}</td>
+                                
                                 <td>₱{{ number_format($order->total, 2) }}</td>
                                 <td>{{ $order->customer->name ?? 'N/A' }}</td>
                                 <td>{{ $order->customer->address ?? 'N/A' }}</td>
